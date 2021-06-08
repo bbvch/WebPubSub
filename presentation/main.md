@@ -20,5 +20,44 @@ are
 - are exposed to the network by ports
 
 ---
+![bg right 100%](websocket.png)
 
 # WebSockets
+
+are
+
+- an abstraction of the network for a web application
+- can be used as a channel for 2-way communication
+
+---
+
+# Availability
+
+Preview in 
+- South East Asio
+- North Europe
+- West Europe
+- East US
+- West US 2
+
+---
+
+# Alternatives
+
+- Socket.io
+- pusher.com
+
+---
+
+# Scaling and Pricing
+
+- 1 unit per 1000 concurrent connections
+- ca. 1.50$ per day per unit
+- max units 100
+
+
+--- 
+
+# Integration
+
+- Can react to messages in the stream and trigger an event hub
