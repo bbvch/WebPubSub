@@ -19,3 +19,9 @@ az webpubsub create `
     --sku Standard_S1 `
     --location $location `
     --unit-count 2
+
+
+az webpubsub event-handler update `
+    -n $pubSubName `
+    -g $rg `
+    --items '{""myHub"": [{""urlTemplate"": ""http://host.com"", ""systemEventPattern"": ""connect""}]}'

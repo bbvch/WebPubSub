@@ -21,7 +21,7 @@
         @click="send"
         class="
           disabled:opacity-50
-          bg-blue-500
+          bg-red-500
           hover:bg-blue-700
           text-white
           font-bold
@@ -53,7 +53,8 @@
 import { ref, defineComponent } from "vue";
 import WebSocketHelper from "../WebSocketHelper";
 export default defineComponent({
-  name: "WebSocketDemo",
+  name: "AzurePubSubDemo",
+
   setup: () => {
     const messages = ref("")
     const connected = ref(false)

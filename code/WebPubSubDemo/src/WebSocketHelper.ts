@@ -1,19 +1,20 @@
 export default class WebSocketHelper {
     connection: WebSocket
-    callback: (event: any) => void
-    constructor(connectionString: string, cb: (e: any) => void) {
-        this.connection = new WebSocket(connectionString)
-        this.callback = cb
+    constructor(private connectionString: string, accessToken: string, private eventCallback: (e: any) => void, private connectSuccessCallback: () => void) {
+        this.connection = new WebSocket(this.connectionString, ["access_token", accessToken])
     }
     connect() {
         this.connection.onmessage = (event) => {
-            this.callback(event)
+            this.eventCallback(event)
         }
-        this.connection.onopen = function (event) {
-            console.log(event)
+        this.connection.onopen = (event) => {
+            debugger;
+            if ((event.currentTarget as WebSocket).readyState === 1)
+                this.connectSuccessCallback()
             console.log("Successfully connected to the echo websocket server...")
         }
     }
+
     send(data: any) {
         this.connection.send(JSON.stringify(data))
     }
