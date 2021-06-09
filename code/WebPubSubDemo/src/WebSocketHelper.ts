@@ -1,26 +1,20 @@
-
 export default class WebSocketHelper {
-    connection = {}
-    val: any
-    constructor(reactiveValue: any) {
-        this.val = reactiveValue
+    connection: WebSocket
+    callback: (event: any) => void
+    constructor(connectionString: string, cb: (e: any) => void) {
+        this.connection = new WebSocket(connectionString)
+        this.callback = cb
     }
-
     connect() {
-
-        this.connection = new WebSocket("wss://echo.websocket.org")
-        this.connection.onmessage = function (event) {
-            console.log(event);
-            this.val += event.data + "\n"
+        this.connection.onmessage = (event) => {
+            this.callback(event)
         }
         this.connection.onopen = function (event) {
             console.log(event)
             console.log("Successfully connected to the echo websocket server...")
         }
     }
-    send(data) {
-        // Send data to the backend - use JSON.stringify(data)
+    send(data: any) {
         this.connection.send(JSON.stringify(data))
     }
-
 }

@@ -16,4 +16,4 @@ Make sure you have a new version of `az` installed and run `az extension add --n
 
 ## Code
 
-The sample is built with vitejs, yarn 2 and vue
+The sample is built with vitejs, yarn 2, vue and tailwind css

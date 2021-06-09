@@ -3,7 +3,20 @@
     <p>See <code>README.md</code> for more information.</p>
     <div class="buttons">
       <button @click="connect">Connect to the Web Socket</button>
-      <button @click="send">Send a message</button>
+      <button
+        class="
+          bg-blue-500
+          hover:bg-blue-700
+          text-white
+          font-bold
+          py-2
+          px-4
+          rounded
+        "
+        @click="send"
+      >
+        Send a message
+      </button>
     </div>
     <p>
       <a href="https://vitejs.dev/guide/features.html" target="_blank">
@@ -17,32 +30,36 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from 'vue'
-import WebSocketHelper from '../WebSocketHelper'
+import { ref, defineComponent } from "vue";
+import WebSocketHelper from "../WebSocketHelper";
 export default defineComponent({
-  name: 'WebSocketDemo',
-  
+  name: "WebSocketDemo",
+
   props: {
     msgs: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
-  setup: (props) => {
-    const count = ref(0)
-    const webSocketHelper = new WebSocketHelper(props.msgs);
-    return { webSocketHelper, count }
-
+  setup: () => {
+    const messages = ref("");
+    const webSocketHelper = new WebSocketHelper(
+      "wss://echo.websocket.org",
+      (event) => {
+        messages.value = event;
+      }
+    );
+    return { webSocketHelper };
   },
   methods: {
-    connect: function()  {
-this.webSocketHelper.connect()    
-  }, 
-  send() { 
-    this.webSocketHelper.send("hello")
-  }
-    }
-})
+    connect() {
+      this.webSocketHelper.connect();
+    },
+    send() {
+      this.webSocketHelper.send("hello");
+    },
+  },
+});
 </script>
 
 <style scoped>
