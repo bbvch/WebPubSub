@@ -1,9 +1,9 @@
 export default class WebSocketHelper {
-    connection: WebSocket
+    connection: WebSocket | undefined
     constructor(private connectionString: string, accessToken: string, private eventCallback: (e: any) => void, private connectSuccessCallback: () => void) {
-        this.connection = new WebSocket(this.connectionString, ["access_token", accessToken])
     }
     connect() {
+        this.connection = new WebSocket(this.connectionString)
         this.connection.onmessage = (event) => {
             this.eventCallback(event)
         }
@@ -16,6 +16,8 @@ export default class WebSocketHelper {
     }
 
     send(data: any) {
-        this.connection.send(JSON.stringify(data))
+        if (this.connection) {
+            this.connection.send(JSON.stringify(data))
+        }
     }
 }

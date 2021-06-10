@@ -2,7 +2,7 @@
   "name": "webpubsubdemo",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 20001",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },

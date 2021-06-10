@@ -57,25 +57,29 @@ export default defineComponent({
   setup: () => {
     const messages = ref("")
     const connected = ref(false)
-    const webSocketHelper = new WebSocketHelper(
+    return { messages, connected };
+  },
+  methods: {
+    connect() {
+    this.webSocketHelper = new WebSocketHelper(
 //      "wss://echo.websocket.org",
 "wss://demopubsubforbbv.webpubsub.azure.com/client/hubs/Hub",
 "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ3c3M6Ly9kZW1vcHVic3ViZm9yYmJ2LndlYnB1YnN1Yi5henVyZS5jb20vY2xpZW50L2h1YnMvSHViIiwiaWF0IjoxNjIzMjQyMDM1LCJleHAiOjE2MjMyNDU2MzV9.T17TZrQzERBSCambYdzxAb9I4jbmit58q71M8raqomQ",
       (event) => {
-        messages.value += JSON.stringify(event);
+        this.messages += JSON.stringify(event);
       }, 
-      () => { connected.value = true;}
+      () => { this.connected = true;}
     );
-    return { messages, connected, webSocketHelper };
-  },
-  methods: {
-    connect() {
       this.webSocketHelper.connect();
     },
     send() {
       this.webSocketHelper.send("hello");
     },
+    
   },
+  data(){
+    return {webSocketHelper: {} as WebSocketHelper}
+  }
 });
 </script>
 

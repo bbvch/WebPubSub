@@ -31,6 +31,14 @@ are
 
 ---
 
+# Web PubSub
+
+Service on top of WebSockets to
+
+- manage connections
+- manage groups (hubs, namespaces) and roles
+- trigger events
+
 # Availability
 
 Preview in 
@@ -44,8 +52,13 @@ Preview in
 
 # Alternatives
 
-- Socket.io
+- Socket.io (self-hosted)
 - pusher.com
+- ably
+- pubnub
+(- SignalR)
+(- Firebase)
+...
 
 ---
 
@@ -54,6 +67,12 @@ Preview in
 - 1 unit per 1000 concurrent connections
 - ca. 1.50$ per day per unit
 - max units 100
+
+---
+
+# Features 
+
+- Live trace tool
 
 
 --- 
