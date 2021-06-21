@@ -28,6 +28,8 @@ are
 
 - an abstraction of the network for a web application
 - can be used as a channel for 2-way communication
+- is for (stream) communication between server and clients
+- WebRTC is for direct communication between 2 clients
 
 ---
 
@@ -39,6 +41,36 @@ Service on top of WebSockets to
 - manage groups (hubs, namespaces) and roles
 - trigger events
 
+---
+# Applications
+- Chat
+- Collaboration (Whiteboard, Code...)
+- Message streams (News, Logs)
+- PubSub
+
+---
+# Demo Portal
+# Demo CLI
+---
+![bg fit](chatapp.png)
+
+---
+![bg fit](chatapp2.png)
+
+---
+
+# Code
+---
+
+
+# Scaling and Pricing
+
+- 1 unit per 1000 concurrent connections
+- ca. 1.50$ per day per unit
+- max units 100
+
+---
+
 # Availability
 
 Preview in 
@@ -49,7 +81,12 @@ Preview in
 - West US 2
 
 ---
+# Additional Features 
 
+- Can react to messages in the stream and trigger an event hub
+- Live trace tool
+
+---
 # Alternatives
 
 - Socket.io (self-hosted)
@@ -60,23 +97,8 @@ Preview in
 (- Firebase)
 ...
 
----
-
-# Scaling and Pricing
-
-- 1 unit per 1000 concurrent connections
-- ca. 1.50$ per day per unit
-- max units 100
-
----
-
-# Features 
-
-- Live trace tool
-
-
 --- 
 
-# Integration
-
-- Can react to messages in the stream and trigger an event hub
+# Links
+https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/web-pubsub/web-pubsub/src
+https://github.com/Azure/azure-webpubsub/blob/main/samples

@@ -30,8 +30,8 @@
       </div>
     </div>
   </nav>
-  <!-- <WebSocketDemo v-show="simple"/>
-  <azure-pub-sub-demo v-show="pubsub"/> -->
+  <web-socket-demo v-show="simple" />
+  <azure-pub-sub-demo v-show="pubsub" />
 </template>
 
 <script lang="ts">

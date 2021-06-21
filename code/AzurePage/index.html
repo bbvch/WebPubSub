@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Publish Subscribe Tutorial</title>
+	<script>var exports = {};</script>
+	<script src="https://unpkg.com/@azure/web-pubsub@1.0.0-beta.2/dist/index.js"></script>
+</head>
+
+<body>
+	<input id="publish-button" type="submit" value="Click here to Publish" />
+</body>
+
+<script>
+
+
+	const button = document.getElementById('publish-button');
+
+	button.addEventListener('click', () => {
+		let serviceClient = new WebPubSubServiceClient("Endpoint=https://demopubsubforbbv.webpubsub.azure.com;AccessKey=CRw8rCCSj7EE9QAm60E/3jjEurKq2pbMYYB0txSGoiI=;Version=1.0;", chat);
+		serviceClient.sendToAll(data, { contentType: "text/plain" });
+	});
+
+
+</script>
+
+</html>
