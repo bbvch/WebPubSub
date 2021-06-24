@@ -19,6 +19,7 @@ are
 - can listen to incoming requests
 - are exposed to the network by ports
 
+
 ---
 ![bg right 100%](websocket.png)
 
@@ -47,6 +48,7 @@ Service on top of WebSockets to
 - Collaboration (Whiteboard, Code...)
 - Message streams (News, Logs)
 - PubSub
+...
 
 ---
 # Demo Portal
@@ -73,8 +75,8 @@ Service on top of WebSockets to
 
 # Availability
 
-Preview in 
-- South East Asio
+*Preview* in 
+- South East Asia
 - North Europe
 - West Europe
 - East US
@@ -84,6 +86,7 @@ Preview in
 # Additional Features 
 
 - Can react to messages in the stream and trigger an event hub
+- Azure Functions Binding (not quite yet)
 - Live trace tool
 
 ---
@@ -101,4 +104,6 @@ Preview in
 
 # Links
 https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/web-pubsub/web-pubsub/src
+https://azure.github.io/azure-webpubsub/concepts/service-internals
 https://github.com/Azure/azure-webpubsub/blob/main/samples
+https://github.com/bbvch/WebPubSub

@@ -5,6 +5,13 @@ An overview of the Azure Web PubSub service
 
 Created with [Marp](https://marp.app/)
 
+start the server with 
+
+```shell
+npx @marp-team/marp-cli -s ./presentation
+```
+
+
 ## Code samples
 
 [MS github](https://github.com/Azure/azure-webpubsub)

@@ -57,7 +57,7 @@
       |
       <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
     </p>
-    {{ messages }}
+    <ul ref="messages"></ul>
   </div>
 </template>
 
@@ -67,7 +67,7 @@ import WebSocketHelper from "../WebSocketHelper";
 export default defineComponent({
   name: "WebSocketDemo",
   setup: () => {
-    const messages = ref("");
+    const messages = ref(null);
     const connected = ref(false);
     return { messages, connected };
   },
@@ -76,14 +76,17 @@ export default defineComponent({
       // set up the helper
       this.webSocketHelper = new WebSocketHelper(
         "wss://demopubsubforbbv.webpubsub.azure.com",
-        "chat",
-        //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjQyNjc2MzIsImV4cCI6MTYyNDI3MTIzMiwiYXVkIjoiaHR0cHM6Ly9kZW1vcHVic3ViZm9yYmJ2LndlYnB1YnN1Yi5henVyZS5jb20vY2xpZW50L2h1YnMvY2hhdCJ9.um32hOXSGBDVYn9D_f5By4lj6L03vnNhkr5X0-DutoQ",
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ3c3M6Ly9kZW1vcHVic3ViZm9yYmJ2LndlYnB1YnN1Yi5henVyZS5jb20vY2xpZW50L2h1YnMvY2hhdCIsImlhdCI6MTYyNDI2NjMwNCwiZXhwIjoxNjI0MzUyNzA0LCJyb2xlIjpbIndlYnB1YnN1Yi5zZW5kVG9Hcm91cCIsIndlYnB1YnN1Yi5qb2luTGVhdmVHcm91cCJdfQ._CW1oBynNj9JRKa3lvQyBPV7oSmYvf5L60s3yoq8eWU",
+        "pubnub",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjQ1MTc1OTIsImV4cCI6MTYyNDUyMTE5MiwiYXVkIjoiaHR0cHM6Ly9kZW1vcHVic3ViZm9yYmJ2LndlYnB1YnN1Yi5henVyZS5jb20vY2xpZW50L2h1YnMvcHVibnViIn0.7VSqoMbJsBWGrfdTwloW4hoeeX_0ztno--OyfM_xhP8",
         (event) => {
-          this.messages += JSON.stringify(event);
+          let item = document.createElement("li");
+          item.innerText = event;
+          this.messages.appendChild(item);
         },
         (message) => {
-          this.messages += message;
+          let item = document.createElement("li");
+          item.innerText = message;
+          this.messages.appendChild(item);
           this.connected = true;
         }
       );
@@ -95,7 +98,14 @@ export default defineComponent({
     },
   },
   data() {
-    return { webSocketHelper: {} as WebSocketHelper };
+    return {
+      webSocketHelper: {} as WebSocketHelper,
+    };
+  },
+  computed() {
+    return {
+      messages: this.$refs.messages as HtmlElement,
+    };
   },
 });
 </script>

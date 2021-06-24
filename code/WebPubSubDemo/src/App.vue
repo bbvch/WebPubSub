@@ -23,43 +23,18 @@
         src="https://quality.bbv.ch/bbv-logo.decc57bb.png"
       />
     </div>
-    <div class="sm:mb-0 self-center">
-      <div class="h-10" style="display: table-cell, vertical-align: middle;">
-        <button @click="setSimple">Simple WebSockets</button>
-        <button @click="setPubSub">Azure Web PubSub</button>
-      </div>
-    </div>
   </nav>
-  <web-socket-demo v-show="simple" />
-  <azure-pub-sub-demo v-show="pubsub" />
+  <web-socket-demo />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import AzurePubSubDemo from "./components/AzurePubSubDemo.vue";
 import WebSocketDemo from "./components/WebSocketDemo.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     WebSocketDemo,
-    AzurePubSubDemo,
-  },
-  methods: {
-    setPubSub() {
-      this.simple = false;
-      this.pubsub = true;
-    },
-    setSimple() {
-      this.simple = true;
-      this.pubsub = false;
-    },
-  },
-  data() {
-    return {
-      simple: false,
-      pubsub: false,
-    };
   },
 });
 </script>

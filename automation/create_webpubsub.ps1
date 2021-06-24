@@ -24,4 +24,4 @@ az webpubsub create `
 az webpubsub event-handler update `
     -n $pubSubName `
     -g $rg `
-    --items '{""myHub"": [{""urlTemplate"": ""http://host.com"", ""systemEventPattern"": ""connect""}]}'
+    --items '{""pubsub"": [{""urlTemplate"": ""http://"", ""systemEventPattern"": ""connect""}]}'
